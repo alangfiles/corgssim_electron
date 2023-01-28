@@ -1,0 +1,7 @@
+/build
+/node_modules
+/public/roms/local
+/src/index.css
+/dist
+.DS_Store
+yarn-error.log

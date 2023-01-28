@@ -1,0 +1,62 @@
+{
+  "name": "corgssimulator",
+  "description": "An NES game to simulate the Central Ohio Retro Gaming Society (CORGS) experience",
+  "version": "1.0.0",
+  "author": "Alan Files",
+  "license": "Apache-2.0",
+  "private": true,
+  "homepage": "./",
+  "main": "public/electron.js",
+  "build": {
+    "appId": "com.alangfiles.corgssimulator",
+    "files": [
+      "build/**/*",
+      "node_modules/**/*"
+    ],
+    "directories":{
+      "buildResources": "assets"
+    }
+  },
+  
+  "dependencies": {
+    "bootstrap": "4.2.1",
+    "electron-is-dev": "^2.0.0",
+    "jsnes": "git://github.com/bfirsh/jsnes.git",
+    "node-sass": "^4.13.1",
+    "prop-types": "^15.7.2",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0",
+    "react-ga": "^2.5.7",
+    "react-router-dom": "^5.0.0",
+    "reactstrap": "^7.1.0",
+    "ringbufferjs": "^1.1.0"
+  },
+  "devDependencies": {
+    "canvas": "^2.6.1",
+    "concurrently": "^7.6.0",
+    "electron": "^22.0.3",
+    "electron-builder": "^23.6.0",
+    "prettier": "^1.16.4",
+    "prettier-check": "^2.0.0",
+    "react-scripts": "3.4.1",
+    "wait-on": "^7.0.1"
+  },
+  "scripts": {
+    "preelectron-pack": "yarn build",
+    "help": "electron-builder --help",
+    "electron-pack": "electron-builder -m -c.extraMetadata.main=build/electron.js",
+    "electron-pack2": "electron-builder build --mac",
+    "electron-dev": "concurrently \"BROWSER=none yarn start\" \"wait-on http://localhost:3000 && electron .\"",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "prettier-check src/**/*.js && react-scripts test",
+    "eject": "react-scripts eject",
+    "format": "prettier --write src/**/*.js"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}
