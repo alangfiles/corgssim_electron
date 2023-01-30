@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { HashRouter, Route } from "react-router-dom";
-import ListPage from "./ListPage";
+import { ListPage } from "./ListPage";
 import RunPage from "./RunPage";
 import { handleError } from "../utils";
 import "./App.css";

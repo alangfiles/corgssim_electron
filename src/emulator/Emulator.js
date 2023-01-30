@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import { NES } from "jsnes";
 
 import FrameTimer from "./FrameTimer";
@@ -168,9 +167,9 @@ class Emulator extends Component {
   }
 }
 
-Emulator.propTypes = {
-  paused: PropTypes.bool,
-  romData: PropTypes.string.isRequired,
-};
+// Emulator.propTypes = {
+//   paused: PropTypes.bool,
+//   romData: PropTypes.string.isRequired,
+// };
 
 export default Emulator;

@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 
 import ControlsModal from "./ControlsModal";
 import Emulator from "../emulator/Emulator";
-import RomLibrary from "./RomLibrary";
 // import { loadBinary } from "./utils";
 
 import "./RunPage.css";
@@ -30,34 +29,33 @@ class RunPage extends Component {
   render() {
     return (
       <div className="RunPage">
-        <nav
-          className="navbar navbar-expand"
-          ref={(el) => {
-            this.navbar = el;
-          }}
-        >
-          <ul className="navbar-nav" style={{ width: "200px" }}>
-            <li className="navitem">
-              <Link to="/" className="nav-link">
-                &lsaquo; Back
-              </Link>
-            </li>
-          </ul>
-          <ul className="navbar-nav ml-auto mr-auto">
-            <li className="navitem">
-              <span className="navbar-text mr-3">{this.state.romName}</span>
-            </li>
-          </ul>
-          <ul className="navbar-nav" style={{ width: "200px" }}>
-            <li className="navitem">
-              <Button
-                outline
-                color="primary"
-                onClick={this.toggleControlsModal}
-                className="mr-3"
-              >
-                Controls
-              </Button>
+        {this.state.paused ? (
+          <div
+            style={{
+              backgroundColor: "black",
+              position: "absolute",
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              padding: "200px",
+            }}
+          >
+            <div
+              style={{
+                display: "flex",
+                alignContent: "center",
+                justifyContent: "center",
+                flexDirection: "column",
+              }}
+            >
+              <h3>
+                {this.state.romName === "corgssimJ"
+                  ? "CORGS Simulator (International Release)"
+                  : "CORGS Simulator (US Release)"}
+              </h3>
+              <br />
+              <br />
               <Button
                 outline
                 color="primary"
@@ -66,9 +64,30 @@ class RunPage extends Component {
               >
                 {this.state.paused ? "Resume" : "Pause"}
               </Button>
-            </li>
-          </ul>
-        </nav>
+              <br />
+              <Button
+                onClick={() => {
+                  window.location = "/";
+                }}
+                outline
+                color="primary"
+                disabled={!this.state.running}
+              >
+                Back to Menu
+              </Button>
+              <br />
+              <Button
+                outline
+                color="primary"
+                onClick={this.toggleControlsModal}
+              >
+                Controls
+              </Button>
+            </div>
+          </div>
+        ) : (
+          <></>
+        )}
 
         {this.state.error ? (
           this.state.error
@@ -121,6 +140,7 @@ class RunPage extends Component {
 
   componentDidMount() {
     window.addEventListener("resize", this.layout);
+    window.addEventListener("keyup", this.keyUp);
     this.layout();
     this.load();
   }
@@ -142,6 +162,12 @@ class RunPage extends Component {
     }
   };
 
+  keyUp = (e) => {
+    if (e.keyCode === 27) {
+      this.handlePauseResume();
+    }
+  };
+
   handleProgress = (e) => {
     if (e.lengthComputable) {
       this.setState({ loadedPercent: (e.loaded / e.total) * 100 });
@@ -157,9 +183,8 @@ class RunPage extends Component {
   };
 
   layout = () => {
-    let navbarHeight = parseFloat(window.getComputedStyle(this.navbar).height);
-    this.screenContainer.style.height = `${window.innerHeight -
-      navbarHeight}px`;
+    // let navbarHeight = parseFloat(window.getComputedStyle(this.navbar).height);
+    this.screenContainer.style.height = `${window.innerHeight}px`;
     if (this.emulator) {
       this.emulator.fitInParent();
     }

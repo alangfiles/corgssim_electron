@@ -5,7 +5,7 @@ import {
   ModalHeader,
   ModalBody,
   ModalFooter,
-  Table
+  Table,
 } from "reactstrap";
 import { Controller } from "jsnes";
 import ControlMapperRow from "./ControlMapperRow";
@@ -20,7 +20,7 @@ class ControlsModal extends Component {
       gamepadConfig: props.gamepadConfig,
       keys: props.keys,
       button: undefined,
-      modified: false
+      modified: false,
     };
     this.handleKeyDown = this.handleKeyDown.bind(this);
     this.handleGamepadButtonDown = this.handleGamepadButtonDown.bind(this);
@@ -32,10 +32,10 @@ class ControlsModal extends Component {
     this.state.gamepadConfig.configs = this.state.gamepadConfig.configs || {};
 
     this.state.controllerIcon = this.state.gamepadConfig.playerGamepadId.map(
-      gamepadId => (gamepadId ? GAMEPAD_ICON : KEYBOARD_ICON)
+      (gamepadId) => (gamepadId ? GAMEPAD_ICON : KEYBOARD_ICON)
     );
     this.state.controllerIconAlt = this.state.gamepadConfig.playerGamepadId.map(
-      gamepadId => (gamepadId ? "gamepad" : "keyboard")
+      (gamepadId) => (gamepadId ? "gamepad" : "keyboard")
     );
     this.state.currentPromptButton = -1;
   }
@@ -74,7 +74,7 @@ class ControlsModal extends Component {
 
     playerGamepadId[playerId - 1] = gamepadId;
 
-    const rejectButtonId = b => {
+    const rejectButtonId = (b) => {
       return b.buttonId !== buttonId;
     };
 
@@ -82,12 +82,12 @@ class ControlsModal extends Component {
       code: buttonInfo.code,
       type: buttonInfo.type,
       buttonId: buttonId,
-      value: buttonInfo.value
+      value: buttonInfo.value,
     };
     newConfig[gamepadId] = {
       buttons: (gamepadConfig.configs[gamepadId] || { buttons: [] }).buttons
         .filter(rejectButtonId)
-        .concat([newButton])
+        .concat([newButton]),
     };
 
     const configs = Object.assign({}, gamepadConfig.configs, newConfig);
@@ -95,13 +95,13 @@ class ControlsModal extends Component {
     this.setState({
       gamepadConfig: {
         configs: configs,
-        playerGamepadId: playerGamepadId
+        playerGamepadId: playerGamepadId,
       },
       currentPromptButton: -1,
-      controllerIcon: playerGamepadId.map(gamepadId =>
+      controllerIcon: playerGamepadId.map((gamepadId) =>
         gamepadId ? GAMEPAD_ICON : KEYBOARD_ICON
       ),
-      modified: true
+      modified: true,
     });
   }
 
@@ -126,22 +126,22 @@ class ControlsModal extends Component {
         ...newKeys,
         [event.keyCode]: [
           ...button.slice(0, 2),
-          event.key.length > 1 ? event.key : String(event.key).toUpperCase()
-        ]
+          event.key.length > 1 ? event.key : String(event.key).toUpperCase(),
+        ],
       },
       button: undefined,
       gamepadConfig: {
         configs: this.state.gamepadConfig.configs,
-        playerGamepadId: playerGamepadId
+        playerGamepadId: playerGamepadId,
       },
       currentPromptButton: -1,
-      controllerIcon: playerGamepadId.map(gamepadId =>
+      controllerIcon: playerGamepadId.map((gamepadId) =>
         gamepadId ? GAMEPAD_ICON : KEYBOARD_ICON
       ),
-      controllerIconAlt: playerGamepadId.map(gamepadId =>
+      controllerIconAlt: playerGamepadId.map((gamepadId) =>
         gamepadId ? "gamepad" : "keyboard"
       ),
-      modified: true
+      modified: true,
     });
   }
 
@@ -164,21 +164,21 @@ class ControlsModal extends Component {
               <tr>
                 <th>Button</th>
                 <th>
-                  Player 1
+                  Input
                   <img
                     className="controller-icon"
                     src={this.state.controllerIcon[0]}
                     alt={this.state.controllerIconAlt[0]}
                   />
                 </th>
-                <th>
+                {/* <th>
                   Player 2
                   <img
                     className="controller-icon"
                     src={this.state.controllerIcon[1]}
                     alt={this.state.controllerIconAlt[1]}
                   />
-                </th>
+                </th> */}
               </tr>
             </thead>
             <tbody>

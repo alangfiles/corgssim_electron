@@ -6,7 +6,7 @@ class ControlMapperRow extends Component {
     this.state = {
       playerOneButton: "",
       playerTwoButton: "",
-      waitingForKey: 0
+      waitingForKey: 0,
     };
     this.handleClick = this.handleClick.bind(this);
   }
@@ -25,7 +25,7 @@ class ControlMapperRow extends Component {
     }
     this.setState({
       playerOneButton: playerButtons[0],
-      playerTwoButton: playerButtons[1]
+      playerTwoButton: playerButtons[1],
     });
   }
 
@@ -46,14 +46,14 @@ class ControlMapperRow extends Component {
     }
 
     var searchButton = (gamepadConfig, buttonId) => {
-      return gamepadConfig.buttons.filter(b => b.buttonId === buttonId)[0];
+      return gamepadConfig.buttons.filter((b) => b.buttonId === buttonId)[0];
     };
 
     var searchNewButton = (prevGamepadConfig, gamepadConfig) => {
-      return gamepadConfig.buttons.filter(b => {
+      return gamepadConfig.buttons.filter((b) => {
         return (
           !prevGamepadConfig ||
-          !prevGamepadConfig.buttons.some(b2 => b2.buttonId === b.buttonId)
+          !prevGamepadConfig.buttons.some((b2) => b2.buttonId === b.buttonId)
         );
       })[0];
     };
@@ -61,7 +61,7 @@ class ControlMapperRow extends Component {
     var waitingForKey = 0;
     var waitingForKeyPlayer = 0;
 
-    var gamepadButtonName = gamepadButton => {
+    var gamepadButtonName = (gamepadButton) => {
       if (gamepadButton.type === "button") return "Btn-" + gamepadButton.code;
       if (gamepadButton.type === "axis")
         return "Axis-" + gamepadButton.code + " " + gamepadButton.value;
@@ -148,7 +148,7 @@ class ControlMapperRow extends Component {
   handleClick(player) {
     this.props.handleClick([player, this.props.button]);
     this.setState({
-      waitingForKey: player
+      waitingForKey: player,
     });
   }
 
@@ -162,11 +162,11 @@ class ControlMapperRow extends Component {
             ? waitingText
             : this.state.playerOneButton}
         </td>
-        <td onClick={() => this.handleClick(2)}>
+        {/* <td onClick={() => this.handleClick(2)}>
           {this.state.waitingForKey === 2
             ? waitingText
             : this.state.playerTwoButton}
-        </td>
+        </td> */}
       </tr>
     );
   }
