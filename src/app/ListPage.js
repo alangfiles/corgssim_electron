@@ -22,10 +22,12 @@ export const ListPage = () => {
 
     //   let gamepads = navigator.getGamepads();
 
-    //   if (gamepads[0].buttons[14].pressed == true) {
+    //   if (gamepads[0].buttons[14].pressed == true || gamepads[0].axis[0] < -0.5) {
+    // left press
     //     setSelected(0);
     //   }
-    //   if (gamepads[0].buttons[15].pressed == true) {
+    //   if (gamepads[0].buttons[15].pressed == true || gamepads[0].axis[0] > 0.5) {
+    // right press
     //     setSelected(1);
     //   }
     //   if (
