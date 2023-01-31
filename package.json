@@ -43,6 +43,7 @@
     "electron-pack": "electron-builder -m -c.extraMetadata.main=build/electron.js",
     "electron-pack2": "electron-builder build --mac",
     "electron-dev": "concurrently \"BROWSER=none yarn start\" \"wait-on http://localhost:3000 && electron .\"",
+    "start-electron": "electron .\"",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "prettier-check src/**/*.js && react-scripts test",
