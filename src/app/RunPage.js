@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Button, Progress } from "reactstrap";
-import { Link } from "react-router-dom";
 
 import ControlsModal from "./ControlsModal";
 import Emulator from "../emulator/Emulator";
