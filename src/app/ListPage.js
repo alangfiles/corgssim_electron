@@ -78,14 +78,15 @@ export const ListPage = () => {
           display: "flex",
           flexDirection: "row",
           justifyContent: "center",
+          marginTop: "50px",
         }}
       >
         <div
-          className={`outer-selectable ${selected === 0 && "outer-selected"}`}
+          className={`box outer-selectable ${selected === 0 &&
+            "outer-selected"}`}
         >
           <div
-            className={`box inner-selectable ${selected === 0 &&
-              "inner-selected"}`}
+            className={`inner-selectable ${selected === 0 && "inner-selected"}`}
           >
             <Link
               key={"corgssim"}
@@ -104,7 +105,8 @@ export const ListPage = () => {
                 <div>
                   <span>
                     <br />
-                    The NES release for the CORGS Convention.
+                    The NES release for the Central Ohio Retro Gaming Society
+                    Convention.
                   </span>
                 </div>
               </div>
@@ -117,8 +119,7 @@ export const ListPage = () => {
             "outer-selected"}`}
         >
           <div
-            className={`box inner-selectable ${selected === 1 &&
-              "inner-selected"}`}
+            className={`inner-selectable ${selected === 1 && "inner-selected"}`}
           >
             <Link
               onMouseOver={() => {

@@ -157,7 +157,10 @@ class RunPage extends Component {
       this.setState({ romName: slug });
       const localROMData = localStorage.getItem("blob-" + slug);
       const romDataBinaryString = Buffer.from(localROMData, "base64");
-      this.handleLoaded(romDataBinaryString.toString("binary"));
+      //wait 500 seconds during load
+      setTimeout(() => {
+        this.handleLoaded(romDataBinaryString.toString("binary"));
+      }, 500);
     }
   };
 
