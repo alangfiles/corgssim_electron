@@ -1,0 +1,46 @@
+
+html, body, #root {
+  height: 100%;
+  background-color: black;
+  color: white;
+}
+
+img.controller-icon {
+	width: 40px;
+	height: 40px;
+  margin-top: -20px;
+}
+
+button { 
+  padding: 12px;
+  border: 2px solid grey;
+  background-color: black;
+  color: white;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+.outer-selectable{
+  border: 4px solid transparent;
+  border-radius: 8px;
+}
+
+.inner-selectable {
+  border: 12px solid transparent;
+  border-radius: 8px;
+}
+
+.outer-selected {
+  border-color: #0e0f9b;
+}
+
+.inner-selected { 
+    border-color: #60a7f7;
+}
+
+.box{
+  max-width: 450px;
+}
