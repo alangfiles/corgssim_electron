@@ -32,7 +32,7 @@
     "concurrently": "^7.6.0",
     "electron": "^22.0.3",
     "electron-builder": "^23.6.0",
-    "prettier": "^1.16.4",
+    "prettier": "^2.8.3",
     "prettier-check": "^2.0.0",
     "react-scripts": "3.4.1",
     "wait-on": "^7.0.1"
