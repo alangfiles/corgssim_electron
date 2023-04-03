@@ -23,7 +23,7 @@
     "jsnes": "git://github.com/bfirsh/jsnes.git",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
-    "react-router-dom": "^5.0.0",
+    "react-router-dom": "^6.10.0",
     "reactstrap": "^7.1.0",
     "ringbufferjs": "^1.1.0"
   },
